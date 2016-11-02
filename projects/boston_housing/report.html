@@ -11851,23 +11851,23 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -11894,7 +11894,7 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -11926,9 +11926,9 @@ Standard deviation of prices: $165,340.28
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>'RM': an increase in it would increase the value of 'MEDV'</p>
-<p>'LSTAT' : an increase in it would lower the value of 'MEDV'</p>
-<p>'PTRATIO': an increase in it would lower the value of 'MEDV'</p>
+<p>'RM': an increase in it would increase the value of 'MEDV', because more rooms typically means bigger house</p>
+<p>'LSTAT' : an increase in it would lower the value of 'MEDV'. because people do not want to be surrounded poor people.</p>
+<p>'PTRATIO': an increase in it would lower the value of 'MEDV', lower PTRATIO means more education resources for children.</p>
 
 </div>
 </div>
@@ -12136,6 +12136,7 @@ Standard deviation of prices: $165,340.28
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>It gives us a portion of existing data to be used used to test against the model. Otherwise, we would have no way to know the performance of the algorithm without collecting extra data.</p>
+<p>Model will not perform very well on new data if it is trained and tested on the same dataset. It easy to have an over fitted model and get high scores when we test it with the training data.</p>
 
 </div>
 </div>
@@ -14616,7 +14617,7 @@ h6VYi4iIiOhhKdYiIiIieliKtYiIiIge9v+suAwi49b4hwAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>We can use grid search to test different combinations of kernel and C and it will find the best combinaiton for us and apply that to the returned classifier.</p>
+<p>We can use grid search to test every combinations of parameters that we provided, and it will find the best combinaiton for us and apply that to the returned classifier.</p>
 
 </div>
 </div>
@@ -14638,7 +14639,7 @@ h6VYi4iIiOhhKdYiIiIieliKtYiIiIge9v+suAwi49b4hwAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>k-fold divides data in to k equal groups, it uses one group for testing and all other groups for training, and repeat the process with different groups being chosen as testing group.</p>
+<p>k-fold splits data in to k equal groups, it uses one group for testing and all other groups for training, and repeat the process with different groups being chosen as testing group. The final score is the average score of each round.</p>
 <p>When using grid search and dataset is small, without cross validation, our model will very likely have the problem of overfitting. Because the algorithm is only optimized for a certain portion of data, and it tends to perform poorly on testing data.</p>
 <p>With cross validaiton, the model is trained using all of the data available, so it describes data better than the model trained without cross validation.</p>
 
@@ -14675,7 +14676,7 @@ h6VYi4iIiOhhKdYiIiIieliKtYiIiIge9v+suAwi49b4hwAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;make_scorer&#39;, &#39;DecisionTreeRegressor&#39;, and &#39;GridSearchCV&#39;</span>
@@ -14701,7 +14702,7 @@ h6VYi4iIiOhhKdYiIiIieliKtYiIiIge9v+suAwi49b4hwAAAABJRU5ErkJggg==
     <span class="n">scoring_fnc</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">performance_metric</span><span class="p">)</span>
 
     <span class="c1"># TODO: Create the grid search object</span>
-    <span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring_fnc</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv_sets</span><span class="p">)</span>
 
     <span class="c1"># Fit the grid search object to the data to compute the optimal model</span>
     <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -14738,7 +14739,7 @@ h6VYi4iIiOhhKdYiIiIieliKtYiIiIge9v+suAwi49b4hwAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Fit the training data to the model using grid search</span>
@@ -14758,7 +14759,7 @@ h6VYi4iIiOhhKdYiIiIieliKtYiIiIge9v+suAwi49b4hwAAAABJRU5ErkJggg==
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Parameter &#39;max_depth&#39; is 5 for the optimal model.
+<pre>Parameter &#39;max_depth&#39; is 4 for the optimal model.
 </pre>
 </div>
 </div>
@@ -14773,7 +14774,7 @@ h6VYi4iIiOhhKdYiIiIieliKtYiIiIge9v+suAwi49b4hwAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>"'max_depth' is 5 for the optimal model." It is higher than what I guessed in question 5.</p>
+<p>"'max_depth' is 4 for the optimal model." It is higher than what I guessed in question 5.</p>
 
 </div>
 </div>
@@ -14822,7 +14823,7 @@ h6VYi4iIiOhhKdYiIiIieliKtYiIiIge9v+suAwi49b4hwAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Produce a matrix for client data</span>
@@ -14847,10 +14848,10 @@ h6VYi4iIiOhhKdYiIiIieliKtYiIiIge9v+suAwi49b4hwAAAABJRU5ErkJggg==
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>mean 487466.666667
-Predicted selling price for Client 1&#39;s home: $411,000.00
-Predicted selling price for Client 2&#39;s home: $175,700.00
-Predicted selling price for Client 3&#39;s home: $875,700.00
+<pre>mean 507657.843137
+Predicted selling price for Client 1&#39;s home: $391,183.33
+Predicted selling price for Client 2&#39;s home: $189,123.53
+Predicted selling price for Client 3&#39;s home: $942,666.67
 </pre>
 </div>
 </div>
@@ -14865,10 +14866,10 @@ Predicted selling price for Client 3&#39;s home: $875,700.00
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>Predicted selling price for Client 1's home: $411,000.00</p>
-<p>Predicted selling price for Client 2's home: $175,700.00</p>
-<p>Predicted selling price for Client 3's home: $875,700.00</p>
-<p>They all fall into the range of $105,000 to $1,024,800, and have mean of $487,467 which is close to previous calculated mean price of $454,343.</p>
+<p>Predicted selling price for Client 1's home: \$391,183.33</p>
+<p>Predicted selling price for Client 2's home: \$189,123.53</p>
+<p>Predicted selling price for Client 3's home: \$942,666.67</p>
+<p>They all fall into the range of \$105,000 to \$1,024,800, and have mean of \$507,658 which is close to previous calculated mean price of \$454,343.</p>
 <p>These data seems reasonable to me. Client 3 has high RM low LSTAT and low PTRATIO, so the house has the highest value. Client 2 has the worst for all three attributes, so the house is valued the lowest. Client 1 is just in the middle.</p>
 
 </div>
