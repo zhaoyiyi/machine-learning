@@ -21894,13 +21894,46 @@ RU5ErkJggg==
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[136]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">pca_results</span><span class="p">[</span><span class="s1">&#39;Explained Variance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Dimension 1    0.4430
+Dimension 2    0.7068
+Dimension 3    0.8299
+Dimension 4    0.9311
+Dimension 5    0.9796
+Dimension 6    1.0000
+Name: Explained Variance, dtype: float64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>The first and second principal components explain about 70% of the variance. The first four principal components explain more than 90% of the variance in data.</p>
+<p>The first and second principal components explain 70.68% of the variance. The first four principal components explain more than 93.11% of the variance in data.</p>
 <p>PC1 is correlated with milk, grocery, and detergents_pater. It increases when any of those three increases.</p>
 <p>PC2 is storngly correlated with fresh, frozen, and deli spending. It is the opposite of PC1 which correlates more to the other three featrues.</p>
 <p>PC3 increases with increasing deli and frozen and decreasing fresh spending.</p>
@@ -25359,6 +25392,7 @@ Sample point 2 predicted to be in Cluster 1
 <p><strong>Answer:</strong></p>
 <p>We certainly can not assume all customers would be affected equally. For customer segment 0, they will not be affected too much by the change, because the products they buy the most usually can last longer, and "freshness" is not an issue for them.</p>
 <p>For customer segment 1, they buy more fresh products, and a decrease in delivery frequency has more impact to them than others.</p>
+<p>To perform an A/B test, we can pick 10 customers from each segment, then change the delivery schedule for 5 customers in each segment. Now we have four groups of customers, S0A, S0B, S1A, S1B, and A means old schedule, B means new schedule. Then we can compare customers in the same segment to see how they react to the change. A positive reaction could be increase in spendings.</p>
 
 </div>
 </div>
